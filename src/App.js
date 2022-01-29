@@ -1,18 +1,18 @@
 import React from "react";
-import CssBaseline from "@mui/material/CssBaseline";
+import { Routes, Route } from "react-router-dom";
+
 import { ThemeProvider, Container } from "@mui/material";
 import Header from "./components/Header/Header";
-import GoodsPage from "./components/GoodsPage/GoodsPage";
-import FiltersDrawer from "./components/FiltersDrawer/FiltersDrawer";
+import GoodsPage from "./pages/GoodsPage";
 
 export function App() {
   return (
     <div className="app">
       <Header />
-      <Container sx={{mt: '200px'}}>
-        <FiltersDrawer/>
-        
-        <GoodsPage />
+      <Container sx={{ mt: "200px" }}>
+        <Routes>
+          <Route path="/" element={<GoodsPage />} />
+        </Routes>
       </Container>
     </div>
   );

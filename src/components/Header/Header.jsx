@@ -1,10 +1,10 @@
+import React from "react";
 import { AppBar, Toolbar, IconButton, Box, Container, Divider } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
-import SearchBar from "../SearchBar/SearchBar";
 import BasketIcon from "@mui/icons-material/ShoppingBasket";
-import React from "react";
 import Navbar from "../Navbar/Navbar";
+import SearchBar from "../SearchBar/SearchBar";
 import CategoriesDropdown from "../CategoriesDropdown/CategoriesDropdown";
 import { pages, categories } from "../../data";
 

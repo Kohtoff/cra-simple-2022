@@ -1,13 +1,6 @@
 import React from "react";
-import {
-  Box,
-  IconButton,
-  Menu,
-  Typography,
-  MenuItem,
-  Button,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import { Box, Button } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar(props) {
   const { data } = props;
@@ -21,8 +14,10 @@ export default function Navbar(props) {
       >
         {data.map((item) => (
           <Button
+            component={NavLink}
+            to={item.path }
             key={item.name}
-            sx={{ my: 2, color: "primary.contrastText", display: "block" }}
+            sx={{ my: 2, color: "primary.contrastText", display: "block", "active": {textTransform: 'underline'} }}
           >
             {item.name}
           </Button>

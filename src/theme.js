@@ -6,7 +6,7 @@ export const theme = createTheme({
       main: "#221d23",
       contrastText: "#f3fcf0",
       activeFont: '#FCBA04',
-    },
+    }, 
     search: {
         label: "#f3fcf0",
         bg: '#fff'

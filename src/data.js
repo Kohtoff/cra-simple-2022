@@ -1,8 +1,8 @@
 export const pages = [
-  { name: "Home", path: "" },
-  { name: "About Us", path: "" },
-  { name: "Contacts", path: "" },
-  { name: "Delivery", path: "" },
+  { name: "Home", path: "/" },
+  { name: "About Us", path: "/about-us" },
+  { name: "Contacts", path: "/contacts" },
+  { name: "Delivery", path: "/delivery" },
 ];
 
 export const categories = [

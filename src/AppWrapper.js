@@ -1,8 +1,12 @@
-import React from 'react';
-import { App } from './App'
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+
+import { App } from "./App";
 
 export function AppWrapper() {
   return (
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   );
 }
