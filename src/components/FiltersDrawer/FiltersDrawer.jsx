@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Drawer } from "@mui/material";
+import { Button, Drawer, Typography, Divider } from "@mui/material";
 import { FilterAlt, SettingsInputAntenna } from "@mui/icons-material";
 import FiltersList from "../Filters/FiltersList";
 
@@ -35,7 +35,10 @@ export default function FiltersDrawer() {
         anchor={"left"}
         open={state["left"]}
         onClose={toggleDrawer("left", false)}
+        SlideProps={{sx: {paddingTop: '20px'}}}
       >
+        <Typography variant='h4' sx={{ml: '1vw'}}>Advanced Filters</Typography>
+        <Divider/>
         <FiltersList sx={{ width: "300px" }} toggleDrawer={toggleDrawer} />
       </Drawer>
     </>

@@ -6,18 +6,15 @@ import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   input: {
-    backgroundColor: "#fff",
     opacity: 0.5,
     borderRadius: "1rem",
     paddingLeft: "10px",
     paddingRight: "10px",
 
     "&:focus": {
-      backgroundColor: "primary.contastText",
     },
   },
   label: {
-    color: "#f3fcf0",
     paddingLeft: "10px",
     zIndex: 2,
     textTransform: "capitalize",

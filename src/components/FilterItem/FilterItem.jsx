@@ -10,7 +10,6 @@ export default function FilterItem({ data }) {
     switch (type) {
       case "range":
         return <PriceSlider range={priceRange}></PriceSlider>;
-        break;
 
       case "checkbox":
         return (
@@ -18,22 +17,20 @@ export default function FilterItem({ data }) {
             {title} <Checkbox />
           </label>
         );
-        break;
 
       case "multiple checkboxes":
         return (
           <>
-            <label>{title}</label>
-            <Box sx={{ml: '40px'}}>
+            <Typography component='label'>{title}</Typography>
+            <Box sx={{ml: '40px', display:'flex'}}>
               {options.map((item) => (
-                <label key={item.id}>
+                <Typography component='label' key={item.id}>
                   {item.name} <Checkbox />
-                </label>
+                </Typography>
               ))}
             </Box>
           </>
         );
-        break;
     }
   };
   return <ListItem sx={{display: 'block'}} key={id}>{renderFilter()}</ListItem>;
