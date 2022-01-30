@@ -4,15 +4,15 @@ import React from "react";
 import "./SearchBar.css";
 import { makeStyles } from "@mui/styles";
 
+
 const useStyles = makeStyles({
   input: {
-    opacity: 0.5,
     borderRadius: "1rem",
     paddingLeft: "10px",
     paddingRight: "10px",
 
-    "&:focus": {
-    },
+
+    
   },
   label: {
     paddingLeft: "10px",

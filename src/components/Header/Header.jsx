@@ -5,16 +5,11 @@ import {
   Toolbar,
   IconButton,
   Box,
-  Container,
-  Divider,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
 import BasketIcon from "@mui/icons-material/ShoppingBasket";
 import Navbar from "../Navbar/Navbar";
-import SearchBar from "../SearchBar/SearchBar";
-import CategoriesDropdown from "../CategoriesDropdown/CategoriesDropdown";
-import { pages, categories } from "../../data";
+import { routesConfig as routes } from "../../routesConfig";
 
 export default function Header() {
   return (
@@ -29,7 +24,7 @@ export default function Header() {
             />
           </Link>
         </Box>
-        <Navbar data={pages} />
+        <Navbar data={routes.filter((route) => route.isNavLink)} />
 
         <Box>
           <IconButton color="inherit">

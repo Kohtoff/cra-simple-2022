@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { ThemeProvider, Container } from "@mui/material";
 
 import Header from "./components/Header/Header";
-import GoodsPage from "./pages/GoodsPage";
+import {routesForRender} from './routesForRender'
 
 export function App() {
   return (
@@ -12,7 +12,9 @@ export function App() {
       <Header />
       <Container sx={{ mt: "50px" }}>
         <Routes>
-          <Route path="/" element={<GoodsPage />} />
+          {routesForRender.map(route => (
+            <Route key={route.key} path={route.path} element={<route.element/>}/>
+          ))}
         </Routes>
       </Container>
     </div>

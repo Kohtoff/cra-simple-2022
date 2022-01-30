@@ -13,6 +13,7 @@ const useStyles = makeStyles({
 });
 export default function Navbar(props) {
   const { data } = props;
+  console.log(data);
   const { button } = useStyles();
   return (
     <div>
@@ -27,12 +28,12 @@ export default function Navbar(props) {
           <Button
           component={NavLink}
           to={item.path}
-          key={item.name}
+          key={item.key}
           sx={{ color: "primary.contrastText",  }}
           className={button}
 
           >
-            {item.name}
+            {item.key}
           </Button>
         ))}
       </Box>

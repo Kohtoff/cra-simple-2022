@@ -1,9 +1,4 @@
-export const pages = [
-  { name: "Catalog", path: "/" },
-  { name: "Cart", path: "/cart" },
-  { name: "About Us", path: "/about-us" },
-  { name: "Delivery", path: "/delivery" },
-];
+
 
 export const categories = [
   {
@@ -162,25 +157,41 @@ export const filters = [
     id: generateID(),
     title: "Filter #1",
     type: "multiple checkboxes",
-    options: [{ id: generateID(), value: "", name: "option #1" }, { id: generateID(), value: "", name: "option #2" }, { id: generateID(), value: "", name: "option #3" }],
+    options: [
+      { id: generateID(), value: "", name: "option #1" },
+      { id: generateID(), value: "", name: "option #2" },
+      { id: generateID(), value: "", name: "option #3" },
+    ],
   },
   {
     id: generateID(),
     title: "Filter #2",
     type: "multiple checkboxes",
-    options: [{ id: generateID(), value: "", name: "option #1" }, { id: generateID(), value: "", name: "option #2" }, { id: generateID(), value: "", name: "option #3" }],
+    options: [
+      { id: generateID(), value: "", name: "option #1" },
+      { id: generateID(), value: "", name: "option #2" },
+      { id: generateID(), value: "", name: "option #3" },
+    ],
   },
   {
     id: generateID(),
     title: "Filter #3",
     type: "multiple checkboxes",
-    options: [{ id: generateID(), value: "", name: "option #1" }, { id: generateID(), value: "", name: "option #2" }, { id: generateID(), value: "", name: "option #3" }],
+    options: [
+      { id: generateID(), value: "", name: "option #1" },
+      { id: generateID(), value: "", name: "option #2" },
+      { id: generateID(), value: "", name: "option #3" },
+    ],
   },
   {
     id: generateID(),
     title: "Filter #4",
     type: "multiple checkboxes",
-    options: [{ id: generateID(), value: "", name: "option #1" }, { id: generateID(), value: "", name: "option #2" }, { id: generateID(), value: "", name: "option #3" }],
+    options: [
+      { id: generateID(), value: "", name: "option #1" },
+      { id: generateID(), value: "", name: "option #2" },
+      { id: generateID(), value: "", name: "option #3" },
+    ],
   },
   { id: generateID(), title: "Filter #5", type: "checkbox", options: [] },
   { id: generateID(), title: "Filter #6", type: "range", options: [] },
