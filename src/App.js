@@ -4,7 +4,8 @@ import { Routes, Route } from "react-router-dom";
 import { ThemeProvider, Container } from "@mui/material";
 
 import Header from "./components/Header/Header";
-import {routesForRender} from './routesForRender'
+import {routesForRender} from './routesForRender';
+import Page404 from "./pages/Page404";
 
 export function App() {
   return (
@@ -17,6 +18,7 @@ export function App() {
             return  (
             <Route key={route.key} path={route.path} element={<route.element/>}/>
           )})}
+          <Route path='*' element={<Page404 />}/>
         </Routes>
       </Container>
     </div>
