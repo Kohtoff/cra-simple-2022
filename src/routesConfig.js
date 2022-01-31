@@ -9,36 +9,36 @@ export const routesKeys = {
 
 export const routesConfig = [
   {
-    key: "Catalog",
+    key: "catalog",
     path: "/catalog",
     title: "Catalog",
     isNavLink: true,
   },
   {
-    key: "Cart",
+    key: "cart",
     path: "/cart",
     title: "Cart",
     isNavLink: true,
   },
   {
-    key: "About",
+    key: "about",
     path: "/about",
     title: "About Us",
     isNavLink: true,
   },
   {
-    key: "Delivery",
+    key: "delivery",
     path: "/delivery",
     title: "Delivery",
     isNavLink: true,
   },
   { 
-    key: "GoodItem",
+    key: "goodItem",
     path: "/product/:id",
     title: "" 
   },
   { 
-    key: "Order", 
+    key: "order", 
     path: "/cart/order", 
     title: "" 
   },

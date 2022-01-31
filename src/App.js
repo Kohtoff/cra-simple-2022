@@ -12,9 +12,11 @@ export function App() {
       <Header />
       <Container sx={{ mt: "50px" }}>
         <Routes>
-          {routesForRender.map(route => (
+          {routesForRender.map(route =>{
+            console.log(route)
+            return  (
             <Route key={route.key} path={route.path} element={<route.element/>}/>
-          ))}
+          )})}
         </Routes>
       </Container>
     </div>

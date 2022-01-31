@@ -14,11 +14,11 @@ const renderMap = {
     [routesKeys.cart]: CartPage,
     [routesKeys.delivery]: DeliveryPage,
     [routesKeys.goodItem]: GoodItemPage,
-    [routesKeys.Order]: OrderPage,
+    [routesKeys.order]: OrderPage,
 }
 
 /*solution to avoid cyclic dependency  */
 export const routesForRender = routesConfig.map(route => ({
     ...route,
-    element: renderMap(route.key)
+    element: renderMap[route.key]
 }))
