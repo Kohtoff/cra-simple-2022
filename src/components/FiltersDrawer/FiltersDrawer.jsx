@@ -4,24 +4,13 @@ import { FilterAlt, SettingsInputAntenna } from "@mui/icons-material";
 import FiltersList from "../Filters/FiltersList";
 
 export default function FiltersDrawer() {
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     top: false,
     left: false,
     bottom: false,
     right: false,
   });
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      console.log("in if");
-      return;
-    } else if (event.target.localName !== "input" && event.target.localName !== "span") {
-      setState({ ...state, [anchor]: open });
-    }
-  };
 
   const openDrawer = () => setState({ ...state, ["left"]: true });
 
@@ -32,14 +21,17 @@ export default function FiltersDrawer() {
         Advanced filters
       </Button>
       <Drawer
+        variant="temporary"
         anchor={"left"}
         open={state["left"]}
-        onClose={toggleDrawer("left", false)}
+        // onClose={toggleDrawer("left", false)}
+        onBackdropClick={() => setState({...state, ['left']: false})}
+
         SlideProps={{sx: {paddingTop: '20px'}}}
       >
         <Typography variant='h4' sx={{ml: '1vw'}}>Advanced Filters</Typography>
         <Divider/>
-        <FiltersList sx={{ width: "300px" }} toggleDrawer={toggleDrawer} />
+        <FiltersList sx={{ width: "300px" }} />
       </Drawer>
     </>
   );

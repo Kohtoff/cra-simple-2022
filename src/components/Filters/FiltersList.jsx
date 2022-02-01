@@ -8,8 +8,6 @@ export default function FiltersList(props) {
   return (
     <Box
       role="presentation"
-      onClick={toggleDrawer("left", false)}
-      onKeyDown={toggleDrawer("left", false)}
       sx={{ width: "500px" }}
     >
       <List>

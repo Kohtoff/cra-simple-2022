@@ -1,5 +1,5 @@
 import React from "react";
-import {Slider, Typography} from '@mui/material';
+import {Slider, Typography, Container} from '@mui/material';
 
 export default function PriceSlider() {
 
@@ -19,10 +19,7 @@ export default function PriceSlider() {
     }
   }
   return (
-    <div>
-      <Typography id="non-linear-slider" gutterBottom>
-        Price
-      </Typography>
+    <Container>
       <Slider
         style={{ maxWidth: 500 }}
         value={value}
@@ -35,6 +32,6 @@ export default function PriceSlider() {
         aria-labelledby="non-linear-slider"
       />
       <Typography>Values: {value}</Typography>
-    </div>
+    </Container>
   );
 }

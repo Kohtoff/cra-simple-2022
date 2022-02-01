@@ -185,16 +185,20 @@ export const filters = [
   },
   {
     id: generateID(),
-    title: "Filter #4",
+    title: "Brand",
     type: "multiple checkboxes",
     options: [
-      { id: generateID(), value: "", name: "option #1" },
-      { id: generateID(), value: "", name: "option #2" },
-      { id: generateID(), value: "", name: "option #3" },
+      { id: generateID(), value: "", name: "Gucci" },
+      { id: generateID(), value: "", name: "Prado" },
+      { id: generateID(), value: "", name: "Burberry" },
     ],
   },
-  { id: generateID(), title: "Filter #5", type: "checkbox", options: [] },
-  { id: generateID(), title: "Filter #6", type: "range", options: [] },
+  { id: generateID(), title: "Only new", type: "checkbox", options: [] },
+  { id: generateID(), title: "Only with discount", type: "checkbox", options: [] },
+  { id: generateID(), title: "Only in stock", type: "checkbox", options: [] },
+  { id: generateID(), title: "Price", type: "range", options: [] },
+  { id: generateID(), title: "Rating", type: "range", options: [] },
+
 ];
 
 export const priceRange = [

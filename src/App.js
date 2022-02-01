@@ -14,7 +14,6 @@ export function App() {
       <Container sx={{ mt: "50px" }}>
         <Routes>
           {routesForRender.map(route =>{
-            console.log(route)
             return  (
             <Route key={route.key} path={route.path} element={<route.element/>}/>
           )})}
