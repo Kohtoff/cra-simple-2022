@@ -1,10 +1,10 @@
 import React from "react";
-import { Divider, Toolbar, Container } from "@mui/material";
+import { Toolbar } from "@mui/material";
 import Slider from "../components/Slider/Slider";
 import GoodsList from "../components/GoodsList/GoodsList";
 import FiltersDrawer from "../components/FiltersDrawer/FiltersDrawer";
 import CategoriesDropdown from "../components/CategoriesDropdown/CategoriesDropdown";
-import { pages, categories } from "../data";
+import { categories } from "../data";
 import SearchBar from "../components/SearchBar/SearchBar";
 
 export default function GoodsPage() {

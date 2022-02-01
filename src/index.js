@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { AppWrapper } from "./AppWrapper";
 import { ThemeProvider } from "@mui/material";
-import { theme } from "./theme";
+import { theme } from "./utils/theme";
 
 ReactDOM.render(
   <React.StrictMode>

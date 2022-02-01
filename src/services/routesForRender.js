@@ -1,11 +1,11 @@
 import {routesKeys, routesConfig} from './routesConfig'
 
-import GoodsPage from "./pages/GoodsPage";
-import CartPage from "./pages/CartPage";
-import AboutPage from "./pages/AboutPage";
-import DeliveryPage from "./pages/DeliveryPage";
-import GoodItemPage from './pages/GoodItemPage';
-import OrderPage from './pages/OrderPage';
+import GoodsPage from "../pages/GoodsPage";
+import CartPage from "../pages/CartPage";
+import AboutPage from "../pages/AboutPage";
+import DeliveryPage from "../pages/DeliveryPage";
+import GoodItemPage from '../pages/GoodItemPage';
+import OrderPage from '../pages/OrderPage';
 
 
 const renderMap = {

@@ -9,7 +9,7 @@ import {
 import PersonIcon from "@mui/icons-material/Person";
 import BasketIcon from "@mui/icons-material/ShoppingBasket";
 import Navbar from "../Navbar/Navbar";
-import { routesConfig as routes } from "../../routesConfig";
+import { routesConfig as routes } from "../../services/routesConfig";
 
 export default function Header() {
   return (

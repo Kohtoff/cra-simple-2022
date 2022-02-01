@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Drawer, Typography, Divider } from "@mui/material";
-import { FilterAlt, SettingsInputAntenna } from "@mui/icons-material";
+import { FilterAlt } from "@mui/icons-material";
 import FiltersList from "../Filters/FiltersList";
 
 export default function FiltersDrawer() {

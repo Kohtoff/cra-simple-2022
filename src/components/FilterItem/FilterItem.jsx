@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  ListItemButton,
-  Checkbox,
-  Typography,
-  Box,
-  List,
-  ListItem,
-  Button,
-  Divider,
-} from "@mui/material";
+import { Checkbox, Typography, List, ListItem, Button } from "@mui/material";
 import { ExpandMore, ExpandLess } from "@mui/icons-material";
 import { priceRange } from "../../data";
 import PriceSlider from "../PriceSlider/PriceSlider";
@@ -50,35 +41,49 @@ export default function FilterItem({ data }) {
     }
   };
 
-  
   return (
     <>
-    <ListItem sx={open && { display: "flex", justifyContent: "space-between", alignItems: 'stretch', flexDirection: 'column' } || type === 'range' && {flexDirection: 'column', alignItems: 'flex-start'}}>
-      <ConditionalWrapper
-        wrapper={(children) => (
-          <Button
-            onClick={handleToggleExpand}
-            fullWidth
-            sx={{ borderRadius: "unset", justifyContent: "space-between" }}
-            variant="text"
-          >
-            {children}
-            {open ? <ExpandLess /> : <ExpandMore />}
-          </Button>
-        )}
+      <ListItem
+        sx={
+          (open && {
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "stretch",
+            flexDirection: "column",
+          }) ||
+          (type === "range" && {
+            flexDirection: "column",
+            alignItems: "flex-start",
+          })
+        }
       >
-        <Typography variant="button" align="center">
-          {title}
-        </Typography>
-      </ConditionalWrapper>
-        <ConditionalWrapper wrapper={(children) => (
-          <Collapse in={open} unmountOnExit>
-            {children}
-          </Collapse>
-        )}>
-          <RenderFilter/>
+        <ConditionalWrapper
+          wrapper={(children) => (
+            <Button
+              onClick={handleToggleExpand}
+              fullWidth
+              sx={{ borderRadius: "unset", justifyContent: "space-between" }}
+              variant="text"
+            >
+              {children}
+              {open ? <ExpandLess /> : <ExpandMore />}
+            </Button>
+          )}
+        >
+          <Typography variant="button" align="center">
+            {title}
+          </Typography>
         </ConditionalWrapper>
-    </ListItem>
-        </>
+        <ConditionalWrapper
+          wrapper={(children) => (
+            <Collapse in={open} unmountOnExit>
+              {children}
+            </Collapse>
+          )}
+        >
+          <RenderFilter />
+        </ConditionalWrapper>
+      </ListItem>
+    </>
   );
 }
