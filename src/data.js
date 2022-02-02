@@ -84,6 +84,7 @@ const minRange = 1;
 const img = process.env.PUBLIC_URL + "/iphoneBanner.png";
 
 const generateID = () => Math.random() * (maxRange - minRange) + minRange;
+const generateRating = () => Math.round(Math.random() * (5 - 1));
 
 export const goods = [
   {
@@ -93,6 +94,7 @@ export const goods = [
     category: "Gadgets",
     price: 600,
     detailedInfo: {},
+    rating: generateRating() 
   },
   {
     id: generateID(),
@@ -101,6 +103,7 @@ export const goods = [
     category: "Gadgets",
     price: 500,
     detailedInfo: {},
+    rating: generateRating() 
   },
   {
     id: generateID(),
@@ -109,6 +112,7 @@ export const goods = [
     category: "Transport",
     price: 14100,
     detailedInfo: {},
+    rating: generateRating() 
   },
   {
     id: generateID(),
@@ -117,6 +121,7 @@ export const goods = [
     category: "Transport",
     price: 89100,
     detailedInfo: {},
+    rating: generateRating() 
   },
   {
     id: generateID(),
@@ -125,6 +130,7 @@ export const goods = [
     category: "License keys",
     price: 80,
     detailedInfo: {},
+    rating: generateRating() 
   },
   {
     id: generateID(),
@@ -133,6 +139,7 @@ export const goods = [
     category: "Transport",
     price: 24000,
     detailedInfo: {},
+    rating: generateRating() 
   },
   {
     id: generateID(),
@@ -141,6 +148,7 @@ export const goods = [
     category: "Gadgets",
     price: 300,
     detailedInfo: {},
+    rating: generateRating() 
   },
   {
     id: generateID(),
@@ -149,6 +157,7 @@ export const goods = [
     category: "collectors` item",
     price: 20,
     detailedInfo: {},
+    rating: generateRating() 
   },
 ];
 

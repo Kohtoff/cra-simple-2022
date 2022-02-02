@@ -31,7 +31,7 @@ export default function PriceSlider() {
         valueLabelDisplay="auto"
         aria-labelledby="non-linear-slider"
       />
-      <Typography>Values: {value}</Typography>
+      <Typography>Range: {value[0]} - {value[1]}</Typography>
     </Container>
   );
 }

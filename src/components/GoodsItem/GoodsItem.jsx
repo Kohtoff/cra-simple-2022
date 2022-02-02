@@ -8,10 +8,12 @@ import {
   CardActions,
   Button,
 } from "@mui/material";
+import RatingSlider from "../RatingSlider/RatingSlider";
 
 export default function GoodsItem(props) {
   const { data } = props;
-  const { img, title, price, category } = data;
+  const { img, title, price, category, rating } = data;
+  console.log(rating);
   return (
     <Grid item xs={12} md={3} sx={{position:'relative'}}>
       <Card
@@ -39,6 +41,7 @@ export default function GoodsItem(props) {
           </Typography>
           <Typography variant="subtitle2">{category}</Typography>
           <Typography variant="body1">Price: {price}$</Typography>
+          <RatingSlider value={rating} readOnly={true}/>
         </CardContent>
         <CardActions>
           <Button

@@ -24,7 +24,6 @@ export default function FiltersDrawer() {
         variant="temporary"
         anchor={"left"}
         open={state["left"]}
-        // onClose={toggleDrawer("left", false)}
         onBackdropClick={() => setState({...state, ['left']: false})}
 
         SlideProps={{sx: {paddingTop: '20px'}}}

@@ -4,12 +4,25 @@ import { ExpandMore, ExpandLess } from "@mui/icons-material";
 import { priceRange } from "../../data";
 import PriceSlider from "../PriceSlider/PriceSlider";
 import { Collapse } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import RatingSlider from "../RatingSlider/RatingSlider";
+
+const useStyles = makeStyles({
+  range: {
+    alignItems: "flex-start",
+  },
+  open: {
+    flexDirection: "column",
+    alignItems: "stretch",
+  },
+});
 
 export default function FilterItem({ data }) {
   const { id, type, title, options } = data;
-  const [open, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
+  const { range, open } = useStyles();
 
-  const handleToggleExpand = () => setOpen(!open);
+  const handleToggleExpand = () => setOpen(!isOpen);
 
   const ConditionalWrapper = ({ wrapper, children }) =>
     type === "multiple checkboxes" ? wrapper(children) : children;
@@ -18,9 +31,6 @@ export default function FilterItem({ data }) {
     switch (type) {
       case "range":
         return <PriceSlider range={priceRange}></PriceSlider>;
-
-      case "checkbox":
-        return <Checkbox />;
 
       case "multiple checkboxes":
         return (
@@ -38,24 +48,17 @@ export default function FilterItem({ data }) {
             </List>
           </>
         );
+
+      default:
+        return <Checkbox />;
     }
   };
 
   return (
     <>
       <ListItem
-        sx={
-          (open && {
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "stretch",
-            flexDirection: "column",
-          }) ||
-          (type === "range" && {
-            flexDirection: "column",
-            alignItems: "flex-start",
-          })
-        }
+        sx={{ justifyContent: "space-between" }}
+        className={isOpen && type !== "checkbox" ? open : range}
       >
         <ConditionalWrapper
           wrapper={(children) => (
@@ -66,7 +69,7 @@ export default function FilterItem({ data }) {
               variant="text"
             >
               {children}
-              {open ? <ExpandLess /> : <ExpandMore />}
+              {isOpen ? <ExpandLess /> : <ExpandMore />}
             </Button>
           )}
         >
@@ -76,7 +79,15 @@ export default function FilterItem({ data }) {
         </ConditionalWrapper>
         <ConditionalWrapper
           wrapper={(children) => (
-            <Collapse in={open} unmountOnExit>
+            <Collapse
+              in={isOpen}
+              unmountOnExit
+              easing={{
+                enter: "cubic-bezier(0.4, 0, 0.2, 1)",
+                exit: "cubic-bezier(0.4, 0, 0.2, 1)",
+              }}
+              timeout={400}
+            >
               {children}
             </Collapse>
           )}
