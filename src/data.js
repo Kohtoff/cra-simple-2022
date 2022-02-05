@@ -257,3 +257,114 @@ export const priceRange = [
     label: "1M",
   },
 ];
+
+export const cartArray = [{
+  id: generateID(),
+  img,
+  title: "BMW M8",
+  category: "Transport",
+  price: 24000,
+  detailedInfo: {},
+  rating: generateRating() 
+},
+{
+  id: generateID(),
+  img,
+  title: "GoPro HERO 8",
+  category: "Gadgets",
+  price: 300,
+  detailedInfo: {},
+  rating: generateRating() 
+},
+{
+  id: generateID(),
+  img,
+  title: "8 hrivnyas",
+  category: "collectors` item",
+  price: 20,
+  detailedInfo: {},
+  rating: generateRating() 
+},
+{
+  id: generateID(),
+  img,
+  title: "BMW M8",
+  category: "Transport",
+  price: 24000,
+  detailedInfo: {},
+  rating: generateRating() 
+},
+{
+  id: generateID(),
+  img,
+  title: "GoPro HERO 8",
+  category: "Gadgets",
+  price: 300,
+  detailedInfo: {},
+  rating: generateRating() 
+},
+{
+  id: generateID(),
+  img,
+  title: "8 hrivnyas",
+  category: "collectors` item",
+  price: 20,
+  detailedInfo: {},
+  rating: generateRating() 
+},
+{
+  id: generateID(),
+  img,
+  title: "BMW M8",
+  category: "Transport",
+  price: 24000,
+  detailedInfo: {},
+  rating: generateRating() 
+},
+{
+  id: generateID(),
+  img,
+  title: "GoPro HERO 8",
+  category: "Gadgets",
+  price: 300,
+  detailedInfo: {},
+  rating: generateRating() 
+},
+{
+  id: generateID(),
+  img,
+  title: "8 hrivnyas",
+  category: "collectors` item",
+  price: 20,
+  detailedInfo: {},
+  rating: generateRating() 
+},
+{
+  id: generateID(),
+  img,
+  title: "BMW M8",
+  category: "Transport",
+  price: 24000,
+  detailedInfo: {},
+  rating: generateRating() 
+},
+{
+  id: generateID(),
+  img,
+  title: "GoPro HERO 8",
+  category: "Gadgets",
+  price: 300,
+  detailedInfo: {},
+  rating: generateRating() 
+},
+{
+  id: generateID(),
+  img,
+  title: "8 hrivnyas",
+  category: "collectors` item",
+  price: 20,
+  detailedInfo: {},
+  rating: generateRating() 
+},
+
+]

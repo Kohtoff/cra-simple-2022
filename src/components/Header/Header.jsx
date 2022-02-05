@@ -2,7 +2,6 @@ import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { AppBar, Toolbar, IconButton, Box } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
-import BasketIcon from "@mui/icons-material/ShoppingBasket";
 import Navbar from "../Navbar/Navbar";
 import CartDrawer from '../CartDrawer/CartDrawer'
 import { routesConfig as routes } from "../../router/routesConfig";
@@ -33,10 +32,8 @@ export default function Header() {
           <IconButton color="inherit">
             <PersonIcon />
           </IconButton>
-          <IconButton color="inherit">
-            <BasketIcon />
-          </IconButton>
-          <CartDrawer></CartDrawer>
+          
+          <CartDrawer />
         </Box>
       </Toolbar>
     </AppBar>
