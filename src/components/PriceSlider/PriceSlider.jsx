@@ -25,7 +25,7 @@ export default function PriceSlider() {
         value={value}
         min={0}
         step={1}
-        max={200}
+        max={120000}
         valueLabelFormat={numFormatter}
         onChange={handleChange}
         valueLabelDisplay="auto"

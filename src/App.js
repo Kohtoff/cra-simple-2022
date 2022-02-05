@@ -1,10 +1,10 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, } from "react-router-dom";
 
 import { Container } from "@mui/material";
 
 import Header from "./components/Header/Header";
-import {routesForRender} from './utils/routesForRender';
+import {routesForRender} from './router/routesForRender';
 import Page404 from "./pages/Page404";
 
 export function App() {

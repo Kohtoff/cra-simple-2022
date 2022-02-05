@@ -13,7 +13,6 @@ import RatingSlider from "../RatingSlider/RatingSlider";
 export default function GoodsItem(props) {
   const { data } = props;
   const { img, title, price, category, rating } = data;
-  console.log(rating);
   return (
     <Grid item xs={12} md={3} sx={{position:'relative'}}>
       <Card
@@ -21,7 +20,7 @@ export default function GoodsItem(props) {
         sx={{
           borderRadius: "0",
           boxShadow: "none",
-          maxHeight: "380px",
+          maxHeight: "405px",
           overflow: "hidden",
           transition: 'all 0.15s ease-out',
 

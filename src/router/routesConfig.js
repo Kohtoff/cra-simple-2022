@@ -4,7 +4,11 @@ export const routesKeys = {
   about: "about",
   delivery: "delivery",
   goodItem: "goodItem",
-  order: "order",
+  orderStepFirst: "orderStepFirst",
+  orderStepSecond: "orderStepSecond",
+  orderStepThird: "orderStepThird",
+
+
 };
 
 export const routesConfig = [
@@ -37,9 +41,19 @@ export const routesConfig = [
     path: "/product/:id",
     title: "" 
   },
-  { 
-    key: "order", 
-    path: "/cart/order", 
+  {
+    key: "orderStepFirst", 
+    path: "/cart/order/1", 
+    title: "" 
+  },
+  {
+    key: "orderStepSecond", 
+    path: "/cart/order/2", 
+    title: "" 
+  },
+  {
+    key: "orderStepThird", 
+    path: "/cart/order/3", 
     title: "" 
   },
 ];

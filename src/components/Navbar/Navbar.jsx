@@ -15,6 +15,7 @@ export default function Navbar(props) {
   const { data } = props;
   console.log(data);
   const { button } = useStyles();
+  console.log('navbar render')
   return (
     <div>
       <Box
@@ -24,7 +25,9 @@ export default function Navbar(props) {
           '& .active':{textDecoration: 'underline'}
         }}
       >
-        {data.map((item) => (
+        {data.map((item) => {
+          console.log('nav link render')
+          return (
           <Button
           component={NavLink}
           to={item.path}
@@ -35,7 +38,7 @@ export default function Navbar(props) {
           >
             {item.key}
           </Button>
-        ))}
+        )})}
       </Box>
     </div>
   );
