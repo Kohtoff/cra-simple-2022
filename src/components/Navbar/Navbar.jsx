@@ -13,9 +13,7 @@ const useStyles = makeStyles({
 });
 export default function Navbar(props) {
   const { data } = props;
-  console.log(data);
   const { button } = useStyles();
-  console.log('navbar render')
   return (
     <div>
       <Box
@@ -26,7 +24,6 @@ export default function Navbar(props) {
         }}
       >
         {data.map((item) => {
-          console.log('nav link render')
           return (
           <Button
           component={NavLink}

@@ -9,10 +9,26 @@ import {
   Button,
 } from "@mui/material";
 import RatingSlider from "../RatingSlider/RatingSlider";
+import { cartArray } from "../../data";
 
 export default function GoodsItem(props) {
   const { data } = props;
   const { img, title, price, category, rating } = data;
+
+
+  
+  const addToBasket = (e) => {
+    const indexOfAddedItem = cartArray.findIndex(item => item.id === data.id)
+    console.log('INDEX', indexOfAddedItem)
+    //DOESN`T WORK PROPERLY
+    if( indexOfAddedItem !== -1) return;
+    //   console.log('REPEAT DETECTED', cartArray[indexOfAddedItem].id)
+    //   return cartArray[indexOfAddedItem].amount += 1
+    // }
+    cartArray.push({...data,amount: 1})
+    console.log(cartArray);
+  } 
+
   return (
     <Grid item xs={12} md={3} sx={{position:'relative'}}>
       <Card
@@ -47,6 +63,7 @@ export default function GoodsItem(props) {
             fullWidth
             variant="contained"
             sx={{ background: "#245462", borderRadius: 0 }}
+            onClick={({target}) => addToBasket(target)}
           >
             Add to basket
           </Button>
