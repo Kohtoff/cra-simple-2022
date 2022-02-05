@@ -4,6 +4,7 @@ import { AppBar, Toolbar, IconButton, Box } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import BasketIcon from "@mui/icons-material/ShoppingBasket";
 import Navbar from "../Navbar/Navbar";
+import CartDrawer from '../CartDrawer/CartDrawer'
 import { routesConfig as routes } from "../../router/routesConfig";
 
 // const detectNavLinks = (routes) => routes.filter((route) => route.isNavLink)
@@ -35,6 +36,7 @@ export default function Header() {
           <IconButton color="inherit">
             <BasketIcon />
           </IconButton>
+          <CartDrawer></CartDrawer>
         </Box>
       </Toolbar>
     </AppBar>

@@ -4,15 +4,10 @@ import { FilterAlt } from "@mui/icons-material";
 import FiltersList from "../Filters/FiltersList";
 
 export default function FiltersDrawer() {
-  const [state, setState] = useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
+  const [open, toggleOpen] = useState(false);
 
 
-  const openDrawer = () => setState({ ...state, ["left"]: true });
+  const openDrawer = () => toggleOpen(!open)
 
   return (
     <>
@@ -23,8 +18,8 @@ export default function FiltersDrawer() {
       <Drawer
         variant="temporary"
         anchor={"left"}
-        open={state["left"]}
-        onBackdropClick={() => setState({...state, ['left']: false})}
+        open={open}
+        onBackdropClick={() => toggleOpen(!open)}
 
         SlideProps={{sx: {paddingTop: '20px'}}}
       >
