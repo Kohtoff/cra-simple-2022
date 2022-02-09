@@ -10,20 +10,25 @@ import {
   IconButton,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { useDispatch } from "react-redux";
+import { changeAmount, removeFromCart } from "../../redux/Cart/actions";
 
 export default function GoodCartCard(props) {
-  const { data, handleRemove, handleChangeAmount } = props;
+  const { data } = props;
   const { id, img, title, price } = data;
-  let [amount, setAmount] = useState(1);
+
+  let [amount, setAmount] = useState(data.amount);
+  const dispatch = useDispatch()
+  const handleRemove = () => dispatch(removeFromCart(id))
 
   const increment = () => {
-    setAmount(++amount);
-    handleChangeAmount(id, amount)
+    setAmount(++amount)
+    dispatch(changeAmount(id, amount))
   };
   const decrement = () => {
     if (amount === 1) return;
     setAmount(--amount);
-    handleChangeAmount(id, amount)
+    dispatch(changeAmount(id, amount))
   };
   
 
@@ -62,7 +67,7 @@ export default function GoodCartCard(props) {
           <Typography>₴{price * amount}</Typography>
         </CardContent>
         <CardActions sx={{ flexGrow: 1, justifyContent: "flex-end" }}>
-          <IconButton onClick={() => handleRemove(id)}>
+          <IconButton onClick={() => handleRemove()}>
             <CloseIcon />
           </IconButton>
         </CardActions>

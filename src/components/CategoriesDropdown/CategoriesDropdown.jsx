@@ -13,7 +13,6 @@ export default function CategoriesDropdown(props) {
       sx={{position:'absolute', zIndex: '10', backgroundColor: 'white', boxShadow:'2'}}
       in={isOpen}
       unmountOnExit
-      fullWidth
       orientation="vertical"
       >list of categories</Collapse>
     </>

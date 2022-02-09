@@ -6,7 +6,6 @@ import Navbar from "../Navbar/Navbar";
 import CartDrawer from '../CartDrawer/CartDrawer'
 import { routesConfig as routes } from "../../router/routesConfig";
 
-// const detectNavLinks = (routes) => routes.filter((route) => route.isNavLink)
 
 export default function Header() {
   const navLinks = useMemo(() => {
@@ -17,7 +16,7 @@ export default function Header() {
     <AppBar position="static" color="primary">
       <Toolbar variant="dense" sx={{ justifyContent: "space-between" }}>
         <Box>
-          <Link to="/">
+          <Link to="/catalog">
             <img
               style={{ width: "100px" }}
               src={process.env.PUBLIC_URL + "/Logo.svg"}

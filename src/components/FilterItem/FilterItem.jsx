@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import { Checkbox, Typography, List, ListItem, Button } from "@mui/material";
+import {
+  Checkbox,
+  Typography,
+  List,
+  ListItem,
+  Button,
+  Collapse,
+  Switch,
+} from "@mui/material";
 import { ExpandMore, ExpandLess } from "@mui/icons-material";
 import { priceRange } from "../../data";
 import PriceSlider from "../PriceSlider/PriceSlider";
-import { Collapse } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import RatingSlider from "../RatingSlider/RatingSlider";
 
 const useStyles = makeStyles({
   range: {
@@ -50,7 +56,7 @@ export default function FilterItem({ data }) {
         );
 
       default:
-        return <Checkbox />;
+        return <Switch />;
     }
   };
 
