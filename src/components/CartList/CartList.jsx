@@ -1,21 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { List } from "@mui/material";
 import GoodCartCard from "../GoodCartCard/GoodCartCard";
 
 export default function CartList(prop) {
-  let { data, setTotalSum } = prop;
-  console.log(data)
-
-  const calculatedSum = () => data.reduce(
-    (prev, curr) => (prev += curr.price * curr.amount),
-    0
-  );
-
-  useEffect(() => {
-    console.log("useEffect");
-
-    setTotalSum(calculatedSum());
-  }, [data]);
+  let {
+    data,
+  } = prop;
 
 
   return (

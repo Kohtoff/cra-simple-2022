@@ -94,7 +94,10 @@ export const goods = [
     category: "Gadgets",
     price: 600,
     detailedInfo: {},
-    rating: generateRating() 
+    rating: generateRating(),
+    isNew: true,
+    isInStock: true,
+    isSale: true
   },
   {
     id: generateID(),
@@ -103,7 +106,10 @@ export const goods = [
     category: "Gadgets",
     price: 500,
     detailedInfo: {},
-    rating: generateRating() 
+    rating: generateRating() ,
+    isInStock: true,
+    isSale: true,
+
   },
   {
     id: generateID(),
@@ -112,7 +118,10 @@ export const goods = [
     category: "Transport",
     price: 14100,
     detailedInfo: {},
-    rating: generateRating() 
+    rating: generateRating(),
+    isInStock: false,
+    isSale: true,
+
   },
   {
     id: generateID(),
@@ -121,7 +130,10 @@ export const goods = [
     category: "Transport",
     price: 89100,
     detailedInfo: {},
-    rating: generateRating() 
+    rating: generateRating(),
+    isInStock: false,
+    isSale: true,
+    isNew: true
   },
   {
     id: generateID(),
@@ -130,7 +142,10 @@ export const goods = [
     category: "License keys",
     price: 80,
     detailedInfo: {},
-    rating: generateRating() 
+    rating: generateRating(),
+    isInStock: true,
+    isNew: true
+
   },
   {
     id: generateID(),
@@ -139,7 +154,7 @@ export const goods = [
     category: "Transport",
     price: 24000,
     detailedInfo: {},
-    rating: generateRating() 
+    rating: generateRating()
   },
   {
     id: generateID(),
@@ -148,7 +163,9 @@ export const goods = [
     category: "Gadgets",
     price: 300,
     detailedInfo: {},
-    rating: generateRating() 
+    rating: generateRating(),
+    isInStock: true,
+
   },
   {
     id: generateID(),
@@ -157,41 +174,13 @@ export const goods = [
     category: "collectors` item",
     price: 20,
     detailedInfo: {},
-    rating: generateRating() 
+    rating: generateRating(),
+    isInStock: true,
+
   },
 ];
 
 export const filters = [
-  {
-    id: generateID(),
-    title: "Filter #1",
-    type: "multiple checkboxes",
-    options: [
-      { id: generateID(), value: "", name: "option #1" },
-      { id: generateID(), value: "", name: "option #2" },
-      { id: generateID(), value: "", name: "option #3" },
-    ],
-  },
-  {
-    id: generateID(),
-    title: "Filter #2",
-    type: "multiple checkboxes",
-    options: [
-      { id: generateID(), value: "", name: "option #1" },
-      { id: generateID(), value: "", name: "option #2" },
-      { id: generateID(), value: "", name: "option #3" },
-    ],
-  },
-  {
-    id: generateID(),
-    title: "Filter #3",
-    type: "multiple checkboxes",
-    options: [
-      { id: generateID(), value: "", name: "option #1" },
-      { id: generateID(), value: "", name: "option #2" },
-      { id: generateID(), value: "", name: "option #3" },
-    ],
-  },
   {
     id: generateID(),
     title: "Brand",
@@ -258,125 +247,4 @@ export const priceRange = [
   },
 ];
 
-export let cartArray = [
-//   {
-//   id: generateID(),
-//   img,
-//   title: "BMW M8",
-//   category: "Transport",
-//   price: 24000,
-//   detailedInfo: {},
-//   rating: generateRating(),
-//   amount: 1 
-// },
-// {
-//   id: generateID(),
-//   img,
-//   title: "GoPro HERO 8",
-//   category: "Gadgets",
-//   price: 300,
-//   detailedInfo: {},
-//   rating: generateRating(),
-//   amount: 1 
-// },
-// {
-//   id: generateID(),
-//   img,
-//   title: "8 hrivnyas",
-//   category: "collectors` item",
-//   price: 20,
-//   detailedInfo: {},
-//   rating: generateRating(),
-//   amount: 1 
-// },
-// {
-//   id: generateID(),
-//   img,
-//   title: "BMW M8",
-//   category: "Transport",
-//   price: 24000,
-//   detailedInfo: {},
-//   rating: generateRating(),
-//   amount: 1 
-// },
-// {
-//   id: generateID(),
-//   img,
-//   title: "GoPro HERO 8",
-//   category: "Gadgets",
-//   price: 300,
-//   detailedInfo: {},
-//   rating: generateRating(),
-//   amount: 1 
-// },
-// {
-//   id: generateID(),
-//   img,
-//   title: "8 hrivnyas",
-//   category: "collectors` item",
-//   price: 20,
-//   detailedInfo: {},
-//   rating: generateRating(),
-//   amount: 1 
-// },
-// {
-//   id: generateID(),
-//   img,
-//   title: "BMW M8",
-//   category: "Transport",
-//   price: 24000,
-//   detailedInfo: {},
-//   rating: generateRating(),
-//   amount: 1 
-// },
-// {
-//   id: generateID(),
-//   img,
-//   title: "GoPro HERO 8",
-//   category: "Gadgets",
-//   price: 300,
-//   detailedInfo: {},
-//   rating: generateRating(),
-//   amount: 1 
-// },
-// {
-//   id: generateID(),
-//   img,
-//   title: "8 hrivnyas",
-//   category: "collectors` item",
-//   price: 20,
-//   detailedInfo: {},
-//   rating: generateRating(),
-//   amount: 1 
-// },
-// {
-//   id: generateID(),
-//   img,
-//   title: "BMW M8",
-//   category: "Transport",
-//   price: 24000,
-//   detailedInfo: {},
-//   rating: generateRating(),
-//   amount: 1 
-// },
-// {
-//   id: generateID(),
-//   img,
-//   title: "GoPro HERO 8",
-//   category: "Gadgets",
-//   price: 300,
-//   detailedInfo: {},
-//   rating: generateRating(),
-//   amount: 1 
-// },
-// {
-//   id: generateID(),
-//   img,
-//   title: "8 hrivnyas",
-//   category: "collectors` item",
-//   price: 20,
-//   detailedInfo: {},
-//   rating: generateRating(),
-//   amount: 1 
-// },
-]
+

@@ -1,4 +1,0 @@
-export const PUSH_TO_CART = 'PUSH_TO_CART'
-export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
-export const CHANGE_AMOUNT = 'CHANGE_AMOUNT'
-export const GET_TOTALS = 'GET_TOTALS'

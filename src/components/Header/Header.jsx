@@ -9,7 +9,6 @@ import { routesConfig as routes } from "../../router/routesConfig";
 
 export default function Header() {
   const navLinks = useMemo(() => {
-    console.log('use memo execution');
     return routes.filter(route => route.isNavLink)}, [])
 
   return (

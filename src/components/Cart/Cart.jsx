@@ -1,15 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Divider, Typography, Box, Button, Container } from "@mui/material";
 import { Link } from "react-router-dom";
 import BasketIcon from "@mui/icons-material/ShoppingBasketOutlined";
 import CartList from "../CartList/CartList";
-import { useSelector, useDispatch } from "react-redux";
+import { useCart } from "../../hooks/useCart";
+import { useDispatch } from "react-redux";
+import { resetCart } from "../../ducks/cart.duck";
+import { useTotalPrice } from '../../hooks/useTotalPrice';
+import axios from 'axios'
 
 export default function Cart(props) {
   const { handlerCloseDrawer } = props;
-  const [totalPrice, setTotalPrice] = useState(0)
-  const state = useSelector((state) => state.cart);
-  const amountOfGoodsInCart = state.cartArray.length;
+  const [cartItems, setCartItems] = useState([])
+  const cart = useCart();
+  const totalPrice = useTotalPrice(cartItems)
+  const amountOfGoodsInCart = cart.cartArray.length;
+  const dispatch = useDispatch();
+  const handlerResetCart = () => dispatch(resetCart({ defaultState: cart }));
+
+  useEffect(() => {
+    axios.all(
+      cart.cartArray.map(async (item) => {
+        return await axios
+        .get(`https://61f5558a62f1e300173c40f3.mockapi.io/products/${item.id}`)
+        .then((response) => ( {...response.data, amount: item.amount}  ))
+      })
+    ).then((response) => {
+      setCartItems(response)
+    })
+  }, [cart.cartArray])
 
   return (
     <>
@@ -34,8 +53,8 @@ export default function Cart(props) {
         </Typography>
       ) : (
         <>
-          <CartList data={state.cartArray} 
-          setTotalSum={setTotalPrice} 
+          <CartList
+            data={cart.cartArray}
           />
           <Container>
             <Typography sx={{ fontWeight: "bold" }}>
@@ -51,6 +70,21 @@ export default function Cart(props) {
               sx={{ borderRadius: "unset", background: "#245462" }}
             >
               Make Order
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => handlerResetCart()}
+              fullWidth
+              disabled={amountOfGoodsInCart > 0 ? false : true}
+              sx={{
+                borderRadius: "unset",
+                background: "#221d23",
+                color: "white",
+                mt: "10px",
+                "&:hover": { backgroundColor: "red" },
+              }}
+            >
+              reset Cart
             </Button>
           </Container>
         </>

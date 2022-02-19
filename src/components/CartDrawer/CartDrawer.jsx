@@ -7,8 +7,7 @@ import { useSelector } from "react-redux";
 
 export default function CartDrawer() {
   const [open, toggleOpen] = useState(false);
-  const badgeValue = useSelector(state => state.cart.cartArray.length)
-  
+  const badgeValue = useSelector((state) => state.cart.cartArray.length);
 
   return (
     <>
@@ -17,7 +16,12 @@ export default function CartDrawer() {
           <BasketIcon />
         </Badge>
       </IconButton>
-      <Drawer anchor={"right"} open={open} onBackdropClick={toggleOpen}>
+      <Drawer
+        anchor={"right"}
+        open={open}
+        onBackdropClick={toggleOpen}
+        ModalProps={{ keepMounted: true }}
+      >
         <Cart handlerCloseDrawer={toggleOpen} />
       </Drawer>
     </>
