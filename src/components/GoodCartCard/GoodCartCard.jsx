@@ -13,11 +13,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch } from "react-redux";
 import { CircularProgress } from "@mui/material";
 import { removeFromCart, changeAmount } from "../../ducks/cart.duck";
-import axios from "axios";
 
 export default function GoodCartCard(props) {
   const { data } = props;
-  const { id } = data;
+  const { id, price, photo, title } = data;
   const [detailedInfo, setDetailedInfo] = useState(null);
   const dispatch = useDispatch();
   let [amount, setAmount] = useState(data.amount);
@@ -28,7 +27,7 @@ export default function GoodCartCard(props) {
   
 
   const totalPrice = () => {
-    return detailedInfo.price * amount
+    return price * amount
   }
 
   const increment = () => {
@@ -42,20 +41,6 @@ export default function GoodCartCard(props) {
     dispatch(changeAmount({ id, amount }));
     totalPrice()
     };
-
-  useEffect(() => {
-    const getProductById = async (id) => {
-      try {
-        const res = await axios.get(
-          `https://61f5558a62f1e300173c40f3.mockapi.io/products/${id}`
-          );
-          setDetailedInfo(res.data);
-        } catch (err) {
-          console.log("GET REQUEST ERROR:", err);
-        }
-      };
-      getProductById(id);
-    }, [id]);
     
 
 
@@ -70,7 +55,7 @@ export default function GoodCartCard(props) {
           width: "400px",
         }}
       >
-        {detailedInfo ? (
+        {data ? (
           <>
             <CardActions
               sx={{ flexDirection: "column", margin: 0 }}
@@ -85,16 +70,16 @@ export default function GoodCartCard(props) {
               </Button>
             </CardActions>
             <CardMedia
-              image={detailedInfo.photo + `?v=${id}` }
+              image={photo + `?v=${id}` }
               sx={{ width: "80px", height: "auto" }}
               component="img"
-              alt={detailedInfo.title}
-              title={detailedInfo.title}
+              alt={title}
+              title={title}
             />
             <CardContent>
-              <Typography>{detailedInfo.title}</Typography>
+              <Typography>{title}</Typography>
               <Typography variant="subtitle2" sx={{ color: "#9c9c9c" }}>
-                {detailedInfo.price} x {amount}
+                {price} x {amount}
               </Typography>
               <Typography>₴{totalPrice()}</Typography>
             </CardContent>
