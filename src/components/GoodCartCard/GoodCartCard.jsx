@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState } from "react";
 import {
   Divider,
   Card,
@@ -17,7 +17,6 @@ import { removeFromCart, changeAmount } from "../../ducks/cart.duck";
 export default function GoodCartCard(props) {
   const { data } = props;
   const { id, price, photo, title } = data;
-  const [detailedInfo, setDetailedInfo] = useState(null);
   const dispatch = useDispatch();
   let [amount, setAmount] = useState(data.amount);
 

@@ -7,19 +7,18 @@ import CategoriesDropdown from "../components/CategoriesDropdown/CategoriesDropd
 import { categories } from "../data";
 import SearchBar from "../components/SearchBar/SearchBar";
 import axios from "axios";
-import CircularProgress from "@mui/material/CircularProgress";
 
 export default function GoodsPage() {
   const [goods, setGoods] = useState([]);
   const [page, setPage] = useState(1);
-  const [activeFilters, setActiveFilters] = useState({
-    isNew: false,
-    isSale: false,
-    isInStock: false,
-    categories: [],
-    rating: [],
-    price: [],
-  });
+  // const [activeFilters, setActiveFilters] = useState({
+  //   isNew: false,
+  //   isSale: false,
+  //   isInStock: false,
+  //   categories: [],
+  //   rating: [],
+  //   price: [],
+  // });
 
   useEffect(() => {
     const getGoods = async () => {
