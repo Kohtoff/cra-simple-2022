@@ -84,8 +84,7 @@ export default function GoodsItem(props) {
   const classes = useStyles();
 
   const handleAddToCart = () => {
-    dispatch(pushToCart({id}));
-    // dispatch(setPrice({id, price}))
+    dispatch(pushToCart({ id }));
     setSnackbarOpen(true);
   };
 
