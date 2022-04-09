@@ -12,7 +12,7 @@ import {
   Button,
 } from "@mui/material";
 import { ShoppingCart } from "@mui/icons-material";
-import { pushToCart, removeFromCart } from "../ducks/cart.duck";
+import { pushToCart, removeFromCart, changeAmount } from "../ducks/cart.duck";
 import GoodTabs from "../components/GoodTabs/GoodTabs";
 import QtyController from "../components/QtyController/QtyController";
 import { Box } from "@mui/system";
@@ -42,6 +42,13 @@ export default function GoodItemPage() {
     dispatch(removeFromCart({ id }));
     toggleIsInCart(false);
   };
+
+  const handleChangeAmount = (value) => {
+    setAmount(value)
+    dispatch(changeAmount({id, amount: value}))
+
+  }
+
 
   useEffect(() => {
     const getProduct = async () => {
@@ -144,7 +151,7 @@ export default function GoodItemPage() {
                 <Box sx={{ alignItems: "baseline" }}>
                   <QtyController
                     data={{ id, price, amount }}
-                    handleOnChange={setAmount}
+                    handleOnChange={handleChangeAmount}
                   />
                   <Button
                     color="error"

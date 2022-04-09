@@ -24,6 +24,12 @@ export default function GoodCartCard(props) {
 
   const handleRemove = () => dispatch(removeFromCart({ id }));
 
+  const handleChangeAmount = (value) => {
+    setAmount(value)
+    dispatch(changeAmount({id, amount: value}))
+
+  }
+
   const totalPrice = () => {
     return price * amount;
   };
@@ -46,7 +52,7 @@ export default function GoodCartCard(props) {
               sx={{ flexDirection: "column", margin: 0 }}
               disableSpacing
             >
-              <QtyController data={{id, price, amount}} handleOnChange={setAmount} />
+              <QtyController data={{id, price, amount}} handleOnChange={handleChangeAmount} />
             </CardActions>
             <CardMedia
               image={photo + `?v=${id}`}
