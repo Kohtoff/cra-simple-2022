@@ -3,10 +3,20 @@ import { List, Typography } from '@mui/material';
 import GoodCartCard from '../GoodCartCard/GoodCartCard';
 import { getProductsFromCart } from '../../api/CatalogApi';
 import { useCart } from '../../hooks/useCart';
+import {makeStyles} from '@mui/styles'
 
-export default function CartList(prop) {
+const useStyles = makeStyles({
+  page: {
+    maxWidth: '70%'
+  }
+})
+
+export default function CartList(props) {
   const cart = useCart();
   const [cartItems, setCartItems] = useState([]);
+  const {mode} = props;
+
+  const classes = useStyles();
 
   useEffect(() => {
     getProductsFromCart(cart.cartArray).then((response) => setCartItems(response));

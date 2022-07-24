@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Divider, Typography, Box, Button, Container } from "@mui/material";
 import { Link } from "react-router-dom";
 import BasketIcon from "@mui/icons-material/ShoppingBasketOutlined";
@@ -6,22 +6,16 @@ import CartList from "../CartList/CartList";
 import { useCart } from "../../hooks/useCart";
 import { useDispatch } from "react-redux";
 import { resetCart } from "../../ducks/cart.duck";
-import { useTotalPrice } from "../../hooks/useTotalPrice";
-import { getProductsFromCart } from "../../api/CatalogApi";
 
 export default function Cart(props) {
   const { handlerCloseDrawer } = props;
-  const [cartItems, setCartItems] = useState([]);
   const cart = useCart();
-  const totalPrice = useTotalPrice(cartItems);
   const amountOfGoodsInCart = cart.cartArray.length;
   const dispatch = useDispatch();
   const handlerResetCart = () => dispatch(resetCart({ defaultState: cart }));
 
 
-  useEffect(() => {
-    getProductsFromCart(cart.cartArray).then(response => setCartItems(response));
-  }, [cart.cartArray])
+
 
   return (
     <>

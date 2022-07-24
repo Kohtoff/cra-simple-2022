@@ -38,7 +38,7 @@ const cartSlice = createSlice({
 
       state.totalPrice -= removePrice;
       state.totalQuantity -= Number(cartArray[itemIdInCart].amount);
-      cartArray = cartArray.filter(item => item.id !== payload.id)
+      state.cartArray.splice(itemIdInCart, 1)
     },
 
     changeAmount: (state, {payload}) => {
