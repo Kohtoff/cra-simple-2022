@@ -10,13 +10,13 @@ import {
   Snackbar,
   Box,
 } from "@mui/material";
-import SaleIcon from "@mui/icons-material/MonetizationOnOutlined";
-import NewGoodsIcon from "@mui/icons-material/NewReleasesOutlined";
 import { makeStyles } from "@mui/styles";
 import { Link } from "react-router-dom";
 import RatingSlider from "../RatingSlider/RatingSlider";
 import { useDispatch } from "react-redux";
 import { pushToCart } from "../../ducks/cart.duck";
+import SaleFlag from "../SaleFlag/SaleFlag";
+import NewProductFlag from "../NewProductFlag/NewProductFlag";
 
 const useStyles = makeStyles({
   outOfStock: { filter: "grayscale(1)" },
@@ -36,34 +36,15 @@ const useStyles = makeStyles({
       transition: "all 0.25s ease-in",
     },
   },
-  badgeItem: {
-    backgroundColor: "red",
-    borderRadius: "25%",
-    maxWidth: "28px",
-    height: "28px",
-    display: "flex",
-    alignItems: "center",
-    overflow: "hidden",
-    padding: "2px",
-    transition: "ease-in .3s all",
-    whiteSpace: "nowrap",
-
-    "&:hover": {
-      borderRadius: "130px",
-      maxWidth: "300px",
-    },
-  },
-  sale: {
-    backgroundColor: "green",
-  },
   badgeContainer: {
-    display: "flex",
-    flexDirection: "column",
-    position: "absolute",
-    top: "20px",
-    left: "5px",
-    gap: "10px",
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'absolute',
+    top: '20px',
+    left: '5px',
+    gap: '10px',
   },
+
 });
 
 export default function GoodsItem(props) {
@@ -79,12 +60,13 @@ export default function GoodsItem(props) {
     isSale,
     isNew,
   } = data;
+
   const dispatch = useDispatch();
   const [isSnackbarOpen, setSnackbarOpen] = useState(false);
   const classes = useStyles();
 
   const handleAddToCart = () => {
-    dispatch(pushToCart({ id }));
+    dispatch(pushToCart({ id, title, price }));
     setSnackbarOpen(true);
   };
 
@@ -94,27 +76,10 @@ export default function GoodsItem(props) {
         {(isSale || isNew) && (
           <Box className={classes.badgeContainer} disableSpacing>
             {isSale ? (
-              <Box
-                className={`${classes.badgeItem} ${classes.sale}`}
-                disableSpacing
-              >
-                <SaleIcon sx={{ fill: "#fff" }} />{" "}
-                <Typography
-                  sx={{ padding: "0 5px", fontSize: "14px", color: "#fff" }}
-                >
-                  Sale
-                </Typography>
-              </Box>
+                <SaleFlag/>
             ) : undefined}
             {isNew ? (
-              <Box className={classes.badgeItem} disableSpacing>
-                <NewGoodsIcon sx={{ fill: "#fff" }} />
-                <Typography
-                  sx={{ padding: "0 5px", fontSize: "14px", color: "#fff" }}
-                >
-                  New Position
-                </Typography>
-              </Box>
+                <NewProductFlag/>
             ) : undefined}
           </Box>
         )}

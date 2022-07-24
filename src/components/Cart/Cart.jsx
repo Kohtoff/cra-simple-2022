@@ -7,7 +7,7 @@ import { useCart } from "../../hooks/useCart";
 import { useDispatch } from "react-redux";
 import { resetCart } from "../../ducks/cart.duck";
 import { useTotalPrice } from "../../hooks/useTotalPrice";
-import axios from "axios";
+import { getProductsFromCart } from "../../api/CatalogApi";
 
 export default function Cart(props) {
   const { handlerCloseDrawer } = props;
@@ -18,21 +18,10 @@ export default function Cart(props) {
   const dispatch = useDispatch();
   const handlerResetCart = () => dispatch(resetCart({ defaultState: cart }));
 
+
   useEffect(() => {
-    axios
-      .all(
-        cart.cartArray.map(async (item) => {
-          return await axios
-            .get(
-              `https://61f5558a62f1e300173c40f3.mockapi.io/products/${item.id}`
-            )
-            .then((response) => ({ ...response.data, amount: item.amount }));
-        })
-      )
-      .then((response) => {
-        setCartItems(response);
-      });
-  }, [cart.cartArray]);
+    getProductsFromCart(cart.cartArray).then(response => setCartItems(response));
+  }, [cart.cartArray])
 
   return (
     <>
@@ -57,10 +46,10 @@ export default function Cart(props) {
         </Typography>
       ) : (
         <>
-          <CartList data={cartItems} />
+          <CartList data={cart.cartArray} />
           <Container sx={{ mb: "20px" }}>
             <Typography sx={{ fontWeight: "bold" }}>
-              Total price: {totalPrice}
+              Total price: {cart.totalPrice}
             </Typography>
             <Button
               variant="contained"

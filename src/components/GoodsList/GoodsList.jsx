@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Grid, Box, Pagination, CircularProgress } from "@mui/material";
+import React from "react";
+import { Grid, CircularProgress } from "@mui/material";
 import GoodsItem from "../GoodsItem/GoodsItem";
 
 
@@ -29,9 +29,7 @@ export default function GoodsList(props) {
               />
             )) : <CircularProgress color="inherit" variant="indeterminate" sx={{margin: 'auto'}}/>}
       </Grid>
-      {/* <Grid item md={12} my={10} display="flex" justifyContent="center">
-        <Pagination count={10} showFirstButton showLastButton />
-      </Grid> */}
+      
     </>
   );
 }

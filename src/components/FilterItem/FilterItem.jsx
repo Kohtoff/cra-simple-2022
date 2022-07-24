@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 });
 
 export default function FilterItem({ data }) {
-  const { id, type, title, options } = data;
+  const { type, title, options } = data;
   const [isOpen, setOpen] = useState(false);
   const { range, open } = useStyles();
 

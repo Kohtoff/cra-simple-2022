@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { AppBar, Toolbar, IconButton, Box } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import Navbar from "../Navbar/Navbar";
-import CartDrawer from '../CartDrawer/CartDrawer'
+import CartDrawer from "../CartDrawer/CartDrawer";
 import { routesConfig as routes } from "../../router/routesConfig";
-
 
 export default function Header() {
   const navLinks = useMemo(() => {
-    return routes.filter(route => route.isNavLink)}, [])
+    return routes.filter((route) => route.isNavLink);
+  }, []);
 
   return (
     <AppBar position="static" color="primary">
@@ -30,7 +30,7 @@ export default function Header() {
           <IconButton color="inherit">
             <PersonIcon />
           </IconButton>
-          
+
           <CartDrawer />
         </Box>
       </Toolbar>

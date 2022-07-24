@@ -1,45 +1,69 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   cartArray: [],
+  totalPrice: 0,
+  totalQuantity: 0,
 };
 
 const cartSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState,
   reducers: {
-    pushToCart: (state, action) => {
-      const {
-        payload: { id },
-      } = action;
+    pushToCart: (state, {payload}) => {
+      const {cartArray} = state;
+      const  { id, title, price } = payload;
       const itemIdInCart = state.cartArray.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item.id === id
       );
 
-      itemIdInCart === -1
-        ? state.cartArray.push({ id, amount: 1 })
-        : (state.cartArray[itemIdInCart].amount += 1);
+      if(itemIdInCart === -1){
+        cartArray.push({id, title, price, amount: 1})
+        state.totalPrice += Number(price);
+        state.totalQuantity += 1
+      } else {
+        cartArray[itemIdInCart].amount += 1;
+        state.totalQuantity += 1;
+        state.totalPrice += Number(price);
+      }
     },
 
-    removeFromCart: (state, action) => {
-      state.cartArray = state.cartArray.filter(
-        (item) => item.id !== action.payload.id
-      );
-    },
-
-    changeAmount: (state, action) => {
+  removeFromCart: (state, {payload}) => {
+      let {cartArray} = state;
       const itemIdInCart = state.cartArray.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item.id === payload.id
       );
-      state.cartArray[itemIdInCart].amount = action.payload.amount;
+
+      const removePrice = Number(cartArray[itemIdInCart].amount) * Number(cartArray[itemIdInCart].price);
+
+      state.totalPrice -= removePrice;
+      state.totalQuantity -= Number(cartArray[itemIdInCart].amount);
+      cartArray = cartArray.filter(item => item.id !== payload.id)
     },
 
-    resetCart: (state, action) => {
-      let { defaultState } = action.payload;
-      defaultState = initialState;
-      state.cartArray = defaultState.cartArray;
+    changeAmount: (state, {payload}) => {
+      const itemIdInCart = state.cartArray.findIndex(
+        (item) => item.id === payload.id
+      );
+
+      const removePrice = Number(state.cartArray[itemIdInCart].amount) * Number(state.cartArray[itemIdInCart].price);
+
+      state.totalPrice -= removePrice;
+
+      state.cartArray[itemIdInCart].amount = Number(payload.amount);
+      state.totalQuantity = Number(payload.amount);
+
+      const addPrice = Number(state.cartArray[itemIdInCart].amount) * Number(state.cartArray[itemIdInCart].price)
+
+      state.totalPrice += addPrice;
     },
+
+    resetCart: (state) => {
+      for(let key in state) state[key] = initialState[key]
+    }
   },
+
+
 });
 
 
@@ -47,11 +71,6 @@ const { reducer, actions } = cartSlice;
 
 export default reducer;
 
-export const {
-  pushToCart,
-  removeFromCart,
-  changeAmount,
-  resetCart,
-} = actions;
+export const { pushToCart, removeFromCart, changeAmount, resetCart } = actions;
 
 export const selectCart = (rootState) => rootState.cart;

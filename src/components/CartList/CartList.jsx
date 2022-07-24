@@ -1,21 +1,24 @@
-import React from "react";
-import { List } from "@mui/material";
-import GoodCartCard from "../GoodCartCard/GoodCartCard";
+import React, { useEffect, useState } from 'react';
+import { List, Typography } from '@mui/material';
+import GoodCartCard from '../GoodCartCard/GoodCartCard';
+import { getProductsFromCart } from '../../api/CatalogApi';
+import { useCart } from '../../hooks/useCart';
 
 export default function CartList(prop) {
-  let {
-    data,
-  } = prop;
+  const cart = useCart();
+  const [cartItems, setCartItems] = useState([]);
 
+  useEffect(() => {
+    getProductsFromCart(cart.cartArray).then((response) => setCartItems(response));
+  }, [cart.cartArray]);
 
-  return (
-    <List sx={{ height: "85%", overflow: "auto" }}>
-      {data.map((item) => (
-        <GoodCartCard
-          key={item.id}
-          data={item}
-        />
-      ))}
+  return cart.cartArray.length <= 0 ? (
+    <Typography sx={{ margin: 'auto', textAlign: 'center' }}>
+      Seems like you don`t have any items
+    </Typography>
+  ) : (
+    <List sx={{ height: '85%', overflow: 'auto' }}>
+      {cartItems.length > 0 && cartItems.map((item) => <GoodCartCard key={item.id} data={item} />)}
     </List>
   );
 }

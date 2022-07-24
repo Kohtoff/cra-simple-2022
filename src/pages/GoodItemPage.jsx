@@ -75,7 +75,7 @@ export default function GoodItemPage() {
           boxShadow: "none",
         }}
       >
-        {data ? (
+        {Object.keys(data).length !== 0 ? (
           <>
             <CardMedia
               image={photo + `?v=${id}`}

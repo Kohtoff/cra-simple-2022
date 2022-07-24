@@ -6,7 +6,6 @@ import {
   CardContent,
   Typography,
   CardActions,
-  Button,
   IconButton,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
