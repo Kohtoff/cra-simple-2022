@@ -6,6 +6,7 @@ import CartList from "../CartList/CartList";
 import { useCart } from "../../hooks/useCart";
 import { useDispatch } from "react-redux";
 import { resetCart } from "../../ducks/cart.duck";
+import TotalPrice from "../TotalPrice/TotalPrice";
 
 export default function Cart(props) {
   const { handlerCloseDrawer } = props;
@@ -42,14 +43,12 @@ export default function Cart(props) {
         <>
           <CartList data={cart.cartArray} />
           <Container sx={{ mb: "20px" }}>
-            <Typography sx={{ fontWeight: "bold" }}>
-              Total price: {cart.totalPrice}
-            </Typography>
+            <TotalPrice>{cart.totalPrice}</TotalPrice>
             <Button
               variant="contained"
               onClick={() => handlerCloseDrawer()}
               component={Link}
-              to="/cart/order/1"
+              to="/order"
               fullWidth
               disabled={amountOfGoodsInCart > 0 ? false : true}
               sx={{ borderRadius: "unset", background: "#245462" }}

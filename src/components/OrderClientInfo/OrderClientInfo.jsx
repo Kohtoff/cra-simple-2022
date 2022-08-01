@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import {
   Typography,
@@ -12,7 +11,7 @@ import {
   FormHelperText,
 } from '@mui/material';
 
-export default function OrderStepSecond() {
+export default function OrderClientInfo() {
   const {
     register,
     formState: { errors },

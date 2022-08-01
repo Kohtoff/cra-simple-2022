@@ -34,7 +34,7 @@ export default function GoodItemPage() {
 
   const handleAddToCart = (id) => {
     console.log(id);
-    dispatch(pushToCart({ id }));
+    dispatch(pushToCart({ id, title, price   }));
     toggleIsInCart(true);
   };
 

@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import CartList from '../components/CartList/CartList';
+import Cart from '../components/Cart/Cart'
 
 export default function CartPage() {
   const cartArray = useSelector((state) => state.cart.cartArray);
@@ -9,7 +9,7 @@ export default function CartPage() {
   return (
     <div>
       <Box>
-        <CartList mode={'page'}></CartList>
+        <Cart mode={'page'}></Cart>
       </Box>
     </div>
   );
