@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Typography, Divider } from "@mui/material";
+import { Button } from "@mui/material";
 import { FilterAlt } from "@mui/icons-material";
 import FiltersList from "../Filters/FiltersList";
 import Drawer from "../Drawer/Drawer";

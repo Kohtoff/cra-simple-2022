@@ -4,7 +4,8 @@ import { nextStep, prevStep } from '../../ducks/order.duck';
 import { Button, Divider } from '@mui/material';
 import { useCart } from '../../hooks/useCart';
 
-export default function OrderControllers() {
+export default function OrderControllers(props) {
+    const {disabled} = props;
     const cart = useCart();
     const dispatch = useDispatch();
 
@@ -17,7 +18,7 @@ export default function OrderControllers() {
         variant="contained"
         onClick={() => nextStepHandler()}
         fullWidth
-        disabled={cart.cartArray.length > 0 ? false : true}
+        disabled={(cart.cartArray.length > 0 ? false : true) || disabled}
         sx={{ borderRadius: 'unset', background: '#245462' }}>
         Next Step
       </Button>

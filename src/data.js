@@ -1,4 +1,4 @@
-
+import { validators } from "./utils/validators";
 
 export const categories = [
   {
@@ -246,5 +246,46 @@ export const priceRange = [
     label: "1M",
   },
 ];
+
+export  const formStruct = {
+  personalInfo: {
+    title: 'Personal Info',
+    fields: [
+      { name: 'fullname', validators: validators.fullname },
+      { name: 'telephone', validators: validators.telephone },
+      { name: 'email', validators: validators.email },
+    ],
+  },
+  delivery: {
+    title: 'Delivery',
+    fields: [
+      [{name: 'Country'}, {name: 'City'}],
+      { name: 'street', validators: validators.street },
+      [
+        { name: 'house', validators: validators.house },
+        { name: 'apartments', validators: validators.apatrments },
+      ],
+    ],
+  },
+  deliveryOption: {
+    title: 'Delivery options',
+    fields: [
+      { name: 'self-care - shop', due: 'at about 3 days' },
+      { name: 'self-care - post', due: 'at about 3 days' },
+      { name: 'courier', due: 'at about 14 days' },
+    ],
+  },
+  paymentOption: {
+    title: 'Payment options',
+    fields: [
+      { name: 'Online prepayment' },
+      { name: 'Card on receipt' },
+      { name: 'Cash on receipt' },
+    ],
+  },
+  comment: {
+    fields: [{ name: 'Message' }],
+  },
+};
 
 

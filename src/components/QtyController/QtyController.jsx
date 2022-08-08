@@ -22,12 +22,12 @@ export default function QtyController(props) {
   };
 
   const handleSetAmount = (value) => {
-    console.log(value);
-    if (value < 0) {
+    const result = value.match(/\d+/);
+    if (result < 0) {
       setAmount(1);
       return;
     }
-    setAmount(value);
+    setAmount(result);
   };
   return (
     <>
@@ -37,7 +37,8 @@ export default function QtyController(props) {
       <Input
         value={amount}
         onChange={({ target }) => handleSetAmount(target.value)}
-        inputMode="tel"
+        // inputMode={'numeric'}
+        inputProps={{pattern: '\d+'}}
         sx={{ maxWidth: "50px", textAlign: "center", input: {textAlign: 'center'}}}
 
       />
