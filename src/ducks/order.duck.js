@@ -26,7 +26,7 @@ const orderSlice = createSlice({
     },
 
     setStep(state, action) {
-        state.currentStep = action.payload;
+      state.currentStep = action.payload;
     },
 
     setStepDone(state, action) {
@@ -38,6 +38,10 @@ const orderSlice = createSlice({
         }
       });
     },
+
+    setUserData(state, action) {
+      state.customerData = action.payload;
+    },
   },
 });
 
@@ -45,6 +49,6 @@ const { reducer, actions } = orderSlice;
 
 export default reducer;
 
-export const { nextStep, prevStep, setStepDone, setStep } = actions;
+export const { nextStep, prevStep, setStepDone, setStep, setUserData } = actions;
 
 export const selectOrder = (state) => state.order;

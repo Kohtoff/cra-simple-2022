@@ -5,18 +5,21 @@ import { Button, Divider } from '@mui/material';
 import { useCart } from '../../hooks/useCart';
 
 export default function OrderControllers(props) {
-    const {disabled} = props;
-    const cart = useCart();
-    const dispatch = useDispatch();
+  const { disabled, onClick } = props;
+  const cart = useCart();
+  const dispatch = useDispatch();
 
-    const nextStepHandler = () => dispatch(nextStep());
-    const prevStepHandler = () => dispatch(prevStep())
+  const nextStepHandler = () => dispatch(nextStep());
+  const prevStepHandler = () => dispatch(prevStep());
   return (
     <>
-    <Divider sx={{mt: "50px", mb: '20px'}}/>
+      <Divider sx={{ mt: '50px', mb: '20px' }} />
       <Button
         variant="contained"
-        onClick={() => nextStepHandler()}
+        onClick={() => {
+          onClick();
+          nextStepHandler();
+        }}
         fullWidth
         disabled={(cart.cartArray.length > 0 ? false : true) || disabled}
         sx={{ borderRadius: 'unset', background: '#245462' }}>
@@ -36,7 +39,6 @@ export default function OrderControllers(props) {
         }}>
         Prev Step
       </Button>
-      </>
-  )
+    </>
+  );
 }
-

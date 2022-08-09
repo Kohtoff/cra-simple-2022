@@ -3,17 +3,21 @@ import { FormControl, InputLabel, Input, FormHelperText } from '@mui/material';
 import { capitalize } from '../../utils/capitalize';
 
 export default function FormInput(props) {
-  const {item, register, errors, sx} = props;
+  const { item, register, errors, sx, name, defaultValue } = props;
   const itemId = item.name + '-input';
-  const labelColor =errors?.[item.name] ? 'error' : 'primary'
+  const labelColor = errors?.[item.name] ? 'error' : 'primary';
   return (
     <>
       <FormControl sx={sx}>
-        <InputLabel htmlFor={itemId} color={labelColor}>{capitalize(item.name)}</InputLabel>
+        <InputLabel htmlFor={itemId} color={labelColor}>
+          {capitalize(item.name)}
+        </InputLabel>
         <Input
-          error={!!(errors?.[item.name])}
+          name={name}
+          error={!!errors?.[item.name]}
           id={itemId}
           {...register(item.name, item.validators)}
+          defaultValue={defaultValue}
           aria-describedby={itemId + '-helper-text'}>
           {item.name}
         </Input>

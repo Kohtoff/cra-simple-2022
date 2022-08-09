@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography, Divider } from '@mui/material';
 
-export default function FormRow(props) {
+export default function FormBox(props) {
   const { data, children } = props;
   return (
     <>
