@@ -1,32 +1,32 @@
 import React from 'react';
-import { FormControl, InputLabel, Input, FormHelperText } from '@mui/material';
+import { Controller } from 'react-hook-form';
+import { TextField } from '@mui/material';
 import { capitalize } from '../../utils/capitalize';
+import { useForm, useFormState } from 'react-hook-form';
 
-export default function FormInput(props) {
-  const { item, register, errors, sx, name, defaultValue } = props;
-  const itemId = item.name + '-input';
-  const labelColor = errors?.[item.name] ? 'error' : 'primary';
+
+export default function FormInput({ item }) {
+  const { control, handleSubmit } = useForm({ mode: 'onChange' });
+  const { errors } = useFormState({ control });
+
+  const onValid = (data) => console.log(data);
   return (
-    <>
-      <FormControl sx={sx}>
-        <InputLabel htmlFor={itemId} color={labelColor}>
-          {capitalize(item.name)}
-        </InputLabel>
-        <Input
-          name={name}
-          error={!!errors?.[item.name]}
-          id={itemId}
-          {...register(item.name, item.validators)}
-          defaultValue={defaultValue}
-          aria-describedby={itemId + '-helper-text'}>
-          {item.name}
-        </Input>
-        {errors?.[item.name] && (
-          <FormHelperText sx={{ color: 'red' }} id="helper-text">
-            {errors?.[item.name]?.message || 'Something wrong!'}
-          </FormHelperText>
-        )}
-      </FormControl>
-    </>
+    <Controller
+      key={item.name}
+      control={control}
+      name={item.name}
+      rules={item.validators}
+      onSubmit={handleSubmit(onValid)}
+      render={({ field }) => (
+        <TextField
+          variant="standard"
+          onChange={(e) => field.onChange(e)}
+          label={capitalize(item.name)}
+          value={field.value}
+          error={!!errors[item.name]?.message}
+          helperText={errors?.[item.name]?.message}
+        />
+      )}
+    />
   );
 }

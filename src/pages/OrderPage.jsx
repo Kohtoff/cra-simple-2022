@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createContext} from 'react';
 import OrderClientInfo from '../components/OrderClientInfo/OrderClientInfo';
 import OrderConfirmation from '../components/OrderConfirmation/OrderConfirmation';
 import OrderFinish from '../components/OrderFinish/OrderFinish';
@@ -7,8 +7,38 @@ import OrderStepper from '../components/OrderStepper/OrderStepper';
 import { useOrder } from '../hooks/useOrder';
 import OrderControllers from '../components/OrderControllers/OrderControllers';
 import { useForm } from 'react-hook-form';
+import { Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { setUserData } from '../ducks/order.duck';
+export const ValidationContext = createContext();
+
+
+// export default function OrderPage() {
+//   const { currentStep } = useOrder();
+//   const { handleSubmit, reset, setValue, control } = useForm();
+
+//   const stepSwithcer = {
+//     0: <OrderProducts />,
+//     1: <OrderClientInfo />,
+//     2: <OrderConfirmation />,
+//     3: <OrderFinish />,
+//   };
+
+//   const StepBlock = () => stepSwithcer[currentStep];
+
+//   return (
+//     <>
+//       <Typography variant="h2" textAlign={'center'}>
+//         Checkout
+//       </Typography>
+//       <OrderStepper />
+//       <ValidationContext.Provider value={{ handleSubmit, reset, setValue, control }}>
+//         <StepBlock />
+//         <OrderControllers />
+//       </ValidationContext.Provider>
+//     </>
+//   );
+// }
 
 export default function OrderPage() {
   const { currentStep } = useOrder();
@@ -17,7 +47,8 @@ export default function OrderPage() {
     formState: { errors, isDirty, isValid },
     handleSubmit,
     getValues,
-  } = useForm({ mode: 'onBlur' });
+    control,
+  } = useForm({ mode: 'onBlur'  });
   const dispatch = useDispatch();
 
   const SaveData = () => {
@@ -27,7 +58,11 @@ export default function OrderPage() {
   const stepSwitch = {
     0: <OrderProducts />,
     1: (
-      <OrderClientInfo validation={{ register, formState: { errors }, handleSubmit, getValues }} />
+      <OrderClientInfo
+        validation={{ register, formState: { errors }, handleSubmit, getValues,
+        control
+       }}
+      />
     ),
     2: <OrderConfirmation />,
     3: <OrderFinish />,
@@ -37,6 +72,8 @@ export default function OrderPage() {
 
   return (
     <div>
+      <Typography variant="h2" textAlign={'center'}>Checkout</Typography>
+
       <OrderStepper />
       <StepBlock />
       <OrderControllers

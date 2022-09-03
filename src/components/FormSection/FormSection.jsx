@@ -1,42 +1,33 @@
 import React from 'react';
+import { Box, Typography, Divider } from '@mui/material';
 import FormInput from '../FormInput/FormInput';
-import FormBox from '../FormBox/FormBox';
-import { Box } from '@mui/material';
 
-export default function FormSection(props) {
-  const {
-    data,
-    validation: { register, errors },
-  } = props;
+export default function FormSection({ data }) {
+
+
 
   return (
-    <FormBox data={data}>
-      {data.fields.map((item, index) =>
-        Array.isArray(item) ? (
-          <Box key={index} sx={{ display: 'flex', gap: '10px', justifyContent: 'space-between' }}>
-            {item.map((item) => (
-              <FormInput
-                sx={{ width: '50%' }}
-                key={item.name}
-                item={item}
-                register={register}
-                errors={errors}
-                name={item.name}
-                defaultValue={item.savedData}
-              />
-            ))}
-          </Box>
-        ) : (
-          <FormInput
-            item={item}
-            name={item.name}
-            key={item.name}
-            register={register}
-            errors={errors}
-            defaultValue={item.savedData}
-          />
-        ),
-      )}
-    </FormBox>
+    <>
+      <Box sx={{ mt: '10px', maxWidth: '50%' }}>
+        <Typography sx={{ mb: '40px' }} variant="h4">
+          {data.title}
+        </Typography>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+          {data.fields.map((item, index) => {
+            console.log(item);
+            return Array.isArray(item) ? (
+              <Box key={index}>
+                {item.map((item) => (
+                  <FormInput key={item.name} item={item} />
+                ))}
+              </Box>
+            ) : (
+              <FormInput key={item.name} item={item} />
+            );
+          })}
+        </Box>
+      </Box>
+      <Divider sx={{ mt: '20px' }} />
+    </>
   );
 }

@@ -6,8 +6,8 @@ export const validators = {
         message: 'Telephone number must contains only digits',
       },
       minLength: {
-        value: 5,
-        message: 'We think that telephone number must contains at least 5 symbols',
+        value: 9,
+        message: 'We think that telephone number must contains at least 9 symbols',
       },
       maxLength: {
         value: 15,
@@ -36,7 +36,7 @@ export const validators = {
             message: 'Limit of symbols reached'
         },
         pattern: {
-          value: /\d+./,
+          value: /\d+/,
           message: 'Must contains some digits and maximum one character at the end'
         }
     },

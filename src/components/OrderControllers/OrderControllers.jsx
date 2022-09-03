@@ -1,15 +1,25 @@
-import React from 'react';
+import React, {useContext}  from 'react';
 import { useDispatch } from 'react-redux';
 import { nextStep, prevStep } from '../../ducks/order.duck';
 import { Button, Divider } from '@mui/material';
 import { useCart } from '../../hooks/useCart';
+import { useOrder } from '../../hooks/useOrder';
+import { ValidationContext } from '../../pages/OrderPage';
 
 export default function OrderControllers(props) {
   const { disabled, onClick } = props;
   const cart = useCart();
+  const order = useOrder()
   const dispatch = useDispatch();
+  const validationContext = useContext(ValidationContext)
 
-  const nextStepHandler = () => dispatch(nextStep());
+  const nextStepHandler = () =>{
+    if(order.currentStep === 1){
+      validationContext.handleSubmit()
+      return;
+    }
+     dispatch(nextStep())
+    };
   const prevStepHandler = () => dispatch(prevStep());
   return (
     <>
@@ -17,8 +27,7 @@ export default function OrderControllers(props) {
       <Button
         variant="contained"
         onClick={() => {
-          onClick();
-          nextStepHandler();
+          nextStepHandler()
         }}
         fullWidth
         disabled={(cart.cartArray.length > 0 ? false : true) || disabled}
