@@ -34,6 +34,7 @@ export default function GoodCartCard(props) {
   };
 
 
+
   return (
     <>
       <Card
@@ -59,6 +60,7 @@ export default function GoodCartCard(props) {
               component="img"
               alt={title}
               title={title}
+              fallback={<CircularProgress />}
             />
             <CardContent>
               <Typography component={Link} to={`/product/${id}`}>

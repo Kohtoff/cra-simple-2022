@@ -2,10 +2,9 @@ import React from 'react';
 import { Box, Typography, Divider } from '@mui/material';
 import FormInput from '../FormInput/FormInput';
 
-export default function FormSection({ data }) {
 
-
-
+export default function FormSection({ data, validation }) {
+  const {control, handleSubmit, errors} = validation
   return (
     <>
       <Box sx={{ mt: '10px', maxWidth: '50%' }}>
@@ -14,15 +13,14 @@ export default function FormSection({ data }) {
         </Typography>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
           {data.fields.map((item, index) => {
-            console.log(item);
             return Array.isArray(item) ? (
               <Box key={index}>
                 {item.map((item) => (
-                  <FormInput key={item.name} item={item} />
+                  <FormInput validation={{control, handleSubmit, errors}} key={item.name} item={item} />
                 ))}
               </Box>
             ) : (
-              <FormInput key={item.name} item={item} />
+              <FormInput validation={{control, handleSubmit, errors}} key={item.name} item={item} />
             );
           })}
         </Box>

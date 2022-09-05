@@ -13,7 +13,7 @@ export const getProduct = (id) => {
   return http.get(`/products/${id}`);
 };
 
-export const getProductsFromCart = (cart) => {
+export const getProductsFromCart = (cart, ) => {
   return axios.all(
     cart.map(async (item) =>
       await getProduct(item.id).then((response) => ({ ...response.data, amount: item.amount })),

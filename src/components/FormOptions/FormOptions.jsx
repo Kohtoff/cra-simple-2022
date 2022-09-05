@@ -4,13 +4,17 @@ import { capitalize } from '../../utils/capitalize';
 import FormBox from '../FormBox/FormBox';
 import { useState } from 'react';
 import { Controller } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
-
+import { useOrder } from '../../hooks/useOrder';
 
 export default function FormOptions(props) {
-  const { data } = props;
-  const { control } = useForm({ mode: 'onChange' });
-  const [optionValue, selectOption] = useState(data.fields[0].name);
+  const {
+    data,
+    validation: { control },
+  } = props;
+  const { customerData } = useOrder();
+  const [optionValue, selectOption] = useState(
+    customerData ? customerData[data.title] : data.fields[0].name,
+  );
 
   return (
     <FormBox data={data}>
@@ -18,13 +22,17 @@ export default function FormOptions(props) {
         <Controller
           control={control}
           name={data.title}
+          defaultValue={customerData ? customerData[data.title] : data.fields[0].name}
           render={({ field }) => {
             return (
               <RadioGroup
                 {...field}
                 sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
-                value={optionValue}
-                onChange={(e) => selectOption(e.currentTarget.value)}>
+                value={field.value}
+                onChange={(e) => {
+                  field.onChange(e.currentTarget.value);
+                  selectOption(e.currentTarget.value);
+                }}>
                 {data.fields.map((option, index) => (
                   <FormControlLabel
                     sx={{
