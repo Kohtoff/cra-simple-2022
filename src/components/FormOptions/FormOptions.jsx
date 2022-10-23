@@ -2,7 +2,6 @@ import React from 'react';
 import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 import { capitalize } from '../../utils/capitalize';
 import FormBox from '../FormBox/FormBox';
-import { useState } from 'react';
 import { Controller } from 'react-hook-form';
 import { useOrder } from '../../hooks/useOrder';
 
@@ -12,9 +11,6 @@ export default function FormOptions(props) {
     validation: { control },
   } = props;
   const { customerData } = useOrder();
-  const [optionValue, selectOption] = useState(
-    customerData ? customerData[data.title] : data.fields[0].name,
-  );
 
   return (
     <FormBox data={data}>
@@ -22,7 +18,7 @@ export default function FormOptions(props) {
         <Controller
           control={control}
           name={data.title}
-          defaultValue={customerData ? customerData[data.title] : data.fields[0].name}
+          defaultValue={customerData[data.title] || data.fields[0].name}
           render={({ field }) => {
             return (
               <RadioGroup
@@ -31,7 +27,6 @@ export default function FormOptions(props) {
                 value={field.value}
                 onChange={(e) => {
                   field.onChange(e.currentTarget.value);
-                  selectOption(e.currentTarget.value);
                 }}>
                 {data.fields.map((option, index) => (
                   <FormControlLabel
@@ -40,7 +35,7 @@ export default function FormOptions(props) {
                       height: '60px',
                       transition: '.2s all ease-in',
                       border: '1px solid #e4e4e4',
-                      ...(optionValue === option.name && {
+                      ...(option.name === field.value && {
                         backgroundColor: 'black',
                         color: 'white',
                         borderColor: '#fff',

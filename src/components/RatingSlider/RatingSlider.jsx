@@ -5,6 +5,6 @@ export default function RatingSlider(props) {
     const {readOnly, value} = props;
     const [rating, setRating] = useState(value)
   return <div>
-      <Rating value={rating} onChange={(event, newRating) => setRating(newRating)} readOnly={readOnly} />
+      <Rating value={rating} precision={0.5} onChange={(event, newRating) => setRating(newRating)} readOnly={readOnly} />
   </div>;
 }

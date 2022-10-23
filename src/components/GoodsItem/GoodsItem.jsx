@@ -101,7 +101,7 @@ export default function GoodsItem(props) {
           </Typography>
           <Typography variant="subtitle2">{category}</Typography>
           <Typography variant="body1">Price: {price}$</Typography>
-          <RatingSlider value={rating} readOnly={true} />
+          <RatingSlider value={rating / 100 * 5} readOnly={true} />
         </CardContent>
         <CardActions sx={{ flexDirection: "column" }} disableSpacing>
           <Button

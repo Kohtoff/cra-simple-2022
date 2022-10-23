@@ -21,7 +21,7 @@ export default function OrderClientInfo() {
   };
 
   return (
-    <Box component={'form'} onChange={handleSubmit(saveData )}>
+    <Box component={'form'} onChange={handleSubmit(saveData)}>
       <FormSection validation={{ control, errors, handleSubmit }} data={formStruct.personalInfo} />
       <FormSection validation={{ control, errors, handleSubmit }} data={formStruct.delivery} />
       <FormOptions validation={{control, errors, handleSubmit}} data={formStruct.deliveryOption} />

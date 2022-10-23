@@ -11,9 +11,6 @@ import { Typography } from '@mui/material';
 export default function OrderPage() {
   const { currentStep, customerData } = useOrder();
 
-
-
-
   const stepSwitch = {
     0: <OrderProducts />,
     1: <OrderClientInfo />,
@@ -23,7 +20,7 @@ export default function OrderPage() {
 
   const StepBlock = () => stepSwitch[currentStep];
 
-  console.log(customerData);
+  console.log(Object.entries(customerData), (currentStep === 1 && !(Object.entries(customerData).length > 9)))
 
   return (
     <div>
@@ -33,9 +30,7 @@ export default function OrderPage() {
 
       <OrderStepper />
       <StepBlock />
-      <OrderControllers
-        disabled={currentStep === 1 && !customerData}
-      />
+      <OrderControllers isLastStep={currentStep === 3} disabledNextStep={(currentStep === 1 && !(Object.entries(customerData).length > 9))} disabledPrevStep={currentStep === 3}/>
     </div>
   );
 }
